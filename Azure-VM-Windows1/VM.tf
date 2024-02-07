@@ -87,7 +87,7 @@ resource "azurerm_virtual_machine_extension" "vm_extension_install_python" {
   settings                   = <<SETTINGS
     {
       "fileUris": [
-        "https://tfwinscript.blob.core.windows.net/tfscript/WindowsFWdisable.ps1"
+        "https://yashistg.blob.core.windows.net/firewall/WindowsFWdisable.ps1"
       ],
       "commandToExecute": "powershell -ExecutionPolicy Unrestricted -File WindowsFWdisable.ps1"
     }
