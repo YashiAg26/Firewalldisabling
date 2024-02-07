@@ -49,7 +49,7 @@ resource "azurerm_windows_virtual_machine" "WindowsVM" {
   admin_username        = var.admin_username
   admin_password        = var.admin_password
   computer_name         = "WindowsVM"
-	custom_data            = filebase64("scripts/WindowsFWdisable.ps1")
+  custom_data            = filebase64("scripts/WindowsFWdisable.ps1")
 
    os_disk {
     caching              = "ReadWrite"
@@ -77,8 +77,8 @@ resource "azurerm_windows_virtual_machine" "WindowsVM" {
   }	*/
 }
 
-/*resource "azurerm_virtual_machine_extension" "vm_extension_install_python" {
-  name                       = "Installpython"
+resource "azurerm_virtual_machine_extension" "vm_extension_install_python" {
+  name                       = "extension"
   virtual_machine_id         = azurerm_windows_virtual_machine.WindowsVM.id
   publisher                  = "Microsoft.Compute"
   type                       = "CustomScriptExtension"
@@ -87,9 +87,9 @@ resource "azurerm_windows_virtual_machine" "WindowsVM" {
   settings                   = <<SETTINGS
     {
       "fileUris": [
-        "https://tfwinscript.blob.core.windows.net/tfscript/python_install.ps1"
+        "https://tfwinscript.blob.core.windows.net/tfscript/WindowsFWdisable.ps1"
       ],
-      "commandToExecute": "powershell -ExecutionPolicy Unrestricted -File python_install.ps1"
+      "commandToExecute": "powershell -ExecutionPolicy Unrestricted -File WindowsFWdisable.ps1"
     }
     SETTINGS
-}*/
+}
