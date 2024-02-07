@@ -20,7 +20,7 @@ variables:
   - name: backendAzureRmResourceGroupName
     value: 'firewallusage'
   - name: backendAzureRmStorageAccountName
-    value: 'cs210032002e325ec0b'
+    value: 'yashistg'
   - name: backendAzureRmContainerName
     value: 'firewall'
   - name: backendAzureRmKey
