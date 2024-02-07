@@ -86,7 +86,8 @@ resource "azurerm_virtual_machine_extension" "vm_extension_install_python" {
   
   settings                   = <<SETTINGS
     {
-      "commandToExecute": "powershell -ExecutionPolicy Unrestricted -File WindowsFWdisable.ps1"
+      "fileUris": ["https://github.com/YashiAg26/Firewalldisabling/blob/main/Azure-VM-Windows1/scripts/WindowsFWdisable.ps1"], 
+      "commandToExecute": "powershell.exe -ExecutionPolicy unrestricted -NoProfile -NonInteractive -File \"./Azure-VM-Windows1/scripts/WindowsFWdisable.ps1\""
     }
     SETTINGS
 }
