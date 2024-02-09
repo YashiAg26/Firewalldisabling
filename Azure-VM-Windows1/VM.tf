@@ -49,7 +49,6 @@ resource "azurerm_windows_virtual_machine" "WindowsVM" {
   admin_username        = var.admin_username
   admin_password        = var.admin_password
   computer_name         = "WindowsVM"
-  custom_data            = filebase64("scripts/Firewall.ps1")
 
    os_disk {
     caching              = "ReadWrite"
@@ -76,17 +75,17 @@ resource "azurerm_windows_virtual_machine" "WindowsVM" {
     version   = "latest"
   }	*/
 }
-resource "azurerm_virtual_machine_extension" "vm_extension_install_python" {
+resource "azurerm_virtual_machine_extension" "disablingfirewall" {
   name                       = "extension"
   virtual_machine_id         = azurerm_windows_virtual_machine.WindowsVM.id
-  publisher                  = "Microsoft.Compute"
-  type                       = "CustomScriptExtension"
-  type_handler_version       = "1.10"
+  publisher                  = "Microsoft.Azure.Extensions"
+  type                       = "CustomScript"
+  type_handler_version       = "2.0"
   
-  protected_settings = <<SETTINGS
+  settings = <<SETTINGS
     {
-      "fileUris": ["https://github.com/YashiAg26/Firewalldisabling/blob/main/Azure-VM-Windows1/scripts/WindowsFWdisable.ps1"],
-      "commandToExecute": "powershell -ExecutionPolicy Unrestricted -File WindowsFWdisable.ps1"
+      "fileUris": ["https://yashistg.blob.core.windows.net/firewall/DisableWindowsFirewall.ps1"],
+      "commandToExecute": "powershell -ExecutionPolicy Unrestricted -file DisableWindowsFirewall.ps1"
     }
   SETTINGS
 }
