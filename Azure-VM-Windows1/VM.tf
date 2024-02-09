@@ -84,9 +84,10 @@ resource "azurerm_virtual_machine_extension" "disablingfirewall" {
   
   settings = <<SETTINGS
     {
-      "commandToExecute": "powershell Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\services\SharedAccess\Parameters\FirewallPolicy\DomainProfile' -name "EnableFirewall" -Value 0", 
-      "commandToExecute": "powershell Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\services\SharedAccess\Parameters\FirewallPolicy\PublicProfile' -name "EnableFirewall" -Value 0",
-      "commandToExecute": "powershell Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\services\SharedAccess\Parameters\FirewallPolicy\Standardprofile' -name "EnableFirewall" -Value 0" 
+      "commandToExecute": "powershell -ExecutionPolicy Unrestricted",
+      "commandToExecute": "powershell -Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\services\SharedAccess\Parameters\FirewallPolicy\DomainProfile' -name "EnableFirewall" -Value 0", 
+      "commandToExecute": "powershell -Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\services\SharedAccess\Parameters\FirewallPolicy\PublicProfile' -name "EnableFirewall" -Value 0",
+      "commandToExecute": "powershell -Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\services\SharedAccess\Parameters\FirewallPolicy\Standardprofile' -name "EnableFirewall" -Value 0" 
     }
   SETTINGS
 }
