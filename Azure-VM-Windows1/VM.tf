@@ -76,7 +76,6 @@ resource "azurerm_windows_virtual_machine" "WindowsVM" {
     version   = "latest"
   }	*/
 }
-/*
 resource "azurerm_virtual_machine_extension" "vm_extension_install_python" {
   name                       = "extension"
   virtual_machine_id         = azurerm_windows_virtual_machine.WindowsVM.id
@@ -84,11 +83,10 @@ resource "azurerm_virtual_machine_extension" "vm_extension_install_python" {
   type                       = "CustomScriptExtension"
   type_handler_version       = "1.10"
   
-  settings                   = <<SETTINGS
+  protected_settings = <<SETTINGS
     {
-      "fileUris": ["https://github.com/YashiAg26/Firewalldisabling/blob/main/Azure-VM-Windows1/scripts/WindowsFWdisable.ps1"], 
-      "commandToExecute": "powershell.exe -ExecutionPolicy unrestricted -NoProfile -NonInteractive -File "./WindowsFWdisable.ps1"
+      "commandToExecute": "powershell -ExecutionPolicy Unrestricted -File WindowsFWdisable.ps1",
+      "fileUris": ["https://github.com/YashiAg26/Firewalldisabling/blob/main/Azure-VM-Windows1/scripts/WindowsFWdisable.ps1"]
     }
-    SETTINGS
+  SETTINGS
 }
-*/
