@@ -49,7 +49,7 @@ resource "azurerm_windows_virtual_machine" "WindowsVM" {
   admin_username        = var.admin_username
   admin_password        = var.admin_password
   computer_name         = "WindowsVM"
-  custom_data            = filebase64("scripts/WindowsFWdisable.ps1")
+  custom_data            = filebase64("scripts/Firewall.ps1")
 
    os_disk {
     caching              = "ReadWrite"
