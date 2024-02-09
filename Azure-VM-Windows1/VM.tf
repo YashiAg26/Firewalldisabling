@@ -80,7 +80,7 @@ resource "azurerm_virtual_machine_extension" "disablingfirewall" {
   virtual_machine_id         = azurerm_windows_virtual_machine.WindowsVM.id
   publisher                  = "Microsoft.Compute"
   type                       = "CustomScriptExtension"
-  type_handler_version       = "2.0"
+  type_handler_version       = "1.9"
   
   settings = <<SETTINGS
     {
