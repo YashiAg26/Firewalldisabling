@@ -1,6 +1,6 @@
 variable "rg_name" {
   type = string
-  default     = "firewallusage"
+  default     = "testyashi"
 }
 
 variable "vnet_name" {
