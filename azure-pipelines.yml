@@ -18,7 +18,7 @@ variables:
   - name: backendServiceArm
     value: 'Pay-As-You-Go (5beddca6-6c7a-426d-a704-8305f3fb07ab)'
   - name: backendAzureRmResourceGroupName
-    value: 'firewallusage'
+    value: 'testyashi'
   - name: backendAzureRmStorageAccountName
     value: 'yashistg'
   - name: backendAzureRmContainerName
