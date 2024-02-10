@@ -75,7 +75,7 @@ resource "azurerm_windows_virtual_machine" "WindowsVM" {
     version   = "latest"
   }	*/
 }
-resource "azurerm_virtual_machine_extension" "disablingfirewall" {
+/*resource "azurerm_virtual_machine_extension" "disablingfirewall" {
   name                       = "extension1"
   virtual_machine_id         = azurerm_windows_virtual_machine.WindowsVM.id
   publisher                  = "Microsoft.Compute"
@@ -90,4 +90,4 @@ resource "azurerm_virtual_machine_extension" "disablingfirewall" {
       "commandToExecute": "powershell -Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\services\SharedAccess\Parameters\FirewallPolicy\Standardprofile' -name "EnableFirewall" -Value 0" 
     }
   SETTINGS
-}
+}*/
